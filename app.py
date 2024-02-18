@@ -4,13 +4,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1>Hello, World!</h1>"
+    health_check = {
+        "status": 200,
+        "ok": 1
+    }
+
+    return jsonify(health_check)
 
 @app.route("/info")
 def info():
     cpu = resource.get_cpu()
     mem = resource.get_memory()
     data = {
+        "status": 200,
         "cpu": {
             "freq": {
                 "current": round(cpu.freq.current / 1000, 1),
