@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from util import resource
+
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
     health_check = {
         "status": 200,
@@ -13,7 +14,7 @@ def index():
 
     return jsonify(health_check)
 
-@app.route("/info")
+@app.route("/info", methods=["GET"])
 def info():
     cpu = resource.get_cpu()
     mem = resource.get_memory()

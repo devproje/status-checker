@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -f .venv ]; then
+if [ -d ".venv/" ]; then
     echo "virtual environment directory is already created"
     exit 0
 fi
