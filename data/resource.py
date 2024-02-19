@@ -1,3 +1,4 @@
+import time
 import psutil
 
 class CPU:
@@ -10,3 +11,6 @@ def get_cpu():
 
 def get_memory():
     return psutil.virtual_memory()
+
+def get_uptime():
+    return time.time() - psutil.boot_time()

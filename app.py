@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from util import resource
+from data import resource
 
 app = Flask(__name__)
 CORS(app)
@@ -32,7 +32,8 @@ def info():
             "used": mem.used >> 30,
             "total": mem.total >> 30,
             "usage": round(mem.percent)
-        }
+        },
+        "uptime": resource.get_uptime()
     }
     
     return jsonify(data)
